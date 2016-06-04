@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Copete</title>
+	<script>
+		function Persona(nombre,edad){
+			this.nombre = nombre;
+			this.edad = edad;
+			this.ebriedad = 0;
+			this.sorbos = 0;
+
+				this.beber_bebida = function(bebida){
+					if (this.ebriedad > 15) {
+						console.log("borracho");
+					}
+					if(bebida.sorbos > 0){
+						if(this.edad > 18 && this.ebriedad < 25 && this.sorbos < 30 && bebida.alcoholica == "alcoholica"){
+							console.log("al seco");//poner nombre
+							bebida.changeLlena();
+							bebida.deescontarSorbo()
+							this.sorbos++;
+							this.ebriedad++;
+						}if (this.edad < 18 && bebida.alcoholica == "alcoholica" && this.sorbos < 30) {
+							console.log("anda a tomar leche")
+						}if (bebida.alcoholica == "noAlcoholica" && this.sorbos < 30) {
+							bebida.changeLlena();
+							bebida.deescontarSorbo();
+							this.sorbos++;
+							console.log("sin copete")
+						}
+					}else{
+						console.log("La bebida esta vacia")
+					}
+					return this;
+				}
+		}	
+
+		function Bebida(alcoholica){
+			this.alcoholica = alcoholica;
+			this.llena = true;
+			this.sorbos = 10;
+
+			this.changeLlena = function(){
+				this.llena = false;
+			}
+
+			this.deescontarSorbo = function(){
+				this.sorbos--;
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
